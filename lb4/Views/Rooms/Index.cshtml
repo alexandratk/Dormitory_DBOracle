@@ -1,0 +1,104 @@
+﻿@model IEnumerable<lb4.Models.Room>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<p>Change room type</p>
+<form asp-action="Proc">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group">
+        <label class="control-label">Min price</label>
+        <input class="form-control" name="MinPrice" />
+    </div>
+ <div class="form-group">
+        <label class="control-label">Max number of beds</label>
+        <input class="form-control" name="MaxNumberOfBeds" />
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Proc" class="btn btn-primary" />
+    </div>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RoomNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumberOfBeds)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Flat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Hostel.HostelId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Hostel.HostelNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Hostel.University)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Hostel.Manager)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RoomNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumberOfBeds)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Flat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hostel.HostelId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hostel.HostelNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hostel.University)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hostel.Manager)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.RoomId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.RoomId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.RoomId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

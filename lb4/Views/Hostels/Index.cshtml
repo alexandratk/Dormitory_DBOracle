@@ -1,0 +1,65 @@
+﻿@model IEnumerable<lb4.Models.Hostel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<p>
+    @ViewBag.FunctionResult
+</p>
+<p>Fing averge price</p>
+<form asp-action="Func">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group">
+        <label class="control-label">Hostel Id</label>
+        <input class="form-control" name="PHostelId" />
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Func" class="btn btn-primary" />
+    </div>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.HostelNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.University)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Manager)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.HostelNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.University)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Manager)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.HostelId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.HostelId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.HostelId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+
